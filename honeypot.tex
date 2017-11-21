@@ -150,6 +150,14 @@ High Interaction & \texttt{HIHV} & \texttt{HILV} \\
 \label{table:HoneypotTypes}
 \end{table}
 
+LIHV This type of honeypot is used when the transactions involved with the analysis are small such as investigating an enumeration attack such as a DNS enumeration but the level of detail in the network activity and the service interaction is extensive.
+
+LILV This type of honeypot is used when a basic testing platform is required to identify how a service is beeing attached to and no other interactions are under investigation i.e. using software systems such as Kippo and testing a few login transactions from a limited number (usually 1) user.
+
+HIHV This type of honeypot is used when a system is being thoroughly tested with high levels of user interaction (pressure testing) and involves large numbers of high power servers capable of supporting high levels of concurrent interactions. These honeypots provide detailed data capture of all the services and the inter-service interactions as well as data captured within the deployed applications, usually a ``real'' system that is being penetration tested for security and potential information leakage evaluation.  
+
+HILV
+
 This paper focuses on the use of \emph{H}igh-\emph{I}nteraction-\emph{L}ow-\emph{V}olume (\texttt{HILV}) and \emph{L}ow-\emph{I}nteraction-\emph{H}igh-\emph{V}olume (\texttt{LIHV}) honeypots and the requirements of an academic networking platform to support the delivery of both undergraduate and postgraduate cyber-security programmes. 
 
 The two other types of honeypots are not required for undergraduate purposes, specifically \emph{H}igh-\emph{I}nteraction-\emph{H}ow-\emph{V}olume (\texttt{HIHV}) due to the cost of deployment and the length of time the environment would take to reconfigure for teaching purposes. This type of honeypot would be useful in a research environment such as a research centre for use in long term internet-based projects. The \emph{L}ow-\emph{I}nteraction-\emph{L}ow-\emph{V}olume (\texttt{LIHV}) platform can be deployed inside the \texttt{HILV} platform as an academic exercise of the \texttt{LIHV} i.e. Kippo~\cite{D:16,SH:15}.
@@ -223,14 +231,14 @@ In addition to the specialist equipment in the laboratory there also needs to be
 
 \section{Honeypot architectures}
 
-\subsection{\texttt{LIHV} Honeypot}
+\subsection{\texttt{HILV} Honeypot}
 
-The \texttt{LIHV} honeypot architecture is an isolated environment. This is provided by using a commercially available cable router that is connected to the main laboratory infrastructure as shown in Figure~\ref{fig:HPOverview}. 
+The \texttt{HILV} honeypot architecture is an isolated environment. This is provided by using a commercially available cable router that is connected to the main laboratory infrastructure as shown in Figure~\ref{fig:HPOverview}. 
 
 \begin{figure}[!ht]
 \begin{center}
 	\includegraphics[scale=0.70]{Images/Honeypot1.eps}
-\caption{\texttt{LIHV} Honeypot overview}
+\caption{\texttt{HILV} Honeypot overview}
 \label{fig:HPOverview}
 \end{center}
 \end{figure}
@@ -254,13 +262,13 @@ Figures~\ref{fig:HP1}~and~\ref{fig:HP2} shows the complete device as deployed in
   \centering
   \begin{minipage}[h]{0.45\textwidth}
     \includegraphics[width=\textwidth]{Images/HP1.eps}
-    \caption{\texttt{LIHV} side view}
+    \caption{\texttt{HILV} side view}
     \label{fig:HP1}
   \end{minipage}
   \hfill
   \begin{minipage}[h]{0.45\textwidth}
     \includegraphics[width=\textwidth]{Images/HP2.eps}
-    \caption{\texttt{LIHV} top view}
+    \caption{\texttt{HILV} top view}
     \label{fig:HP2}
   \end{minipage}
 \end{figure}
@@ -268,7 +276,7 @@ Figures~\ref{fig:HP1}~and~\ref{fig:HP2} shows the complete device as deployed in
 \begin{figure}[htb]
 \begin{center}
 	\includegraphics[scale=0.25]{Images/HP3.eps}
-\caption{\texttt{LIHV} Raspberry Pi boards (side view)}
+\caption{\texttt{HILV} Raspberry Pi boards (side view)}
 \label{fig:HP3}
 \end{center}
 \end{figure}

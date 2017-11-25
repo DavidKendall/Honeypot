@@ -109,7 +109,7 @@ The paper concludes by outlining how the platform has been successfully deployed
 \section{Introduction}\label{intro}
 When teaching cyber-security in an academic environment there are many considerations that need to be taken into account, not least, respecting other users privacy and their access to the learning and teaching facilities within the academic environment.
 
-Activities such as reconnaissance and experimentation can result in traffic or services being deployed into the teaching network environment. These activities may effect other users through service depletion, traffic redirection~\cite{LR:06,ACGO:06} or through data capture that may compromise a users legal rights e.g. capturing activity or sensitive information that you are not authorised to possess.
+Activities such as reconnaissance and experimentation can result in traffic or services being deployed into the teaching network environment. These activities may effect other users through service depletion, traffic redirection~\cite{ACGO:06,LR:06} or through data capture that may compromise a users legal rights e.g. capturing activity or sensitive information that you are not authorised to possess.
 
 The environment must also support activities that would normally be prevented through configurations designed for production environments. A \emph{normal} academic infrastructure designed for general student access may implement restrictions through \texttt{MAC} blocking to prevent rogue equipment being attached to the network or firewalls to prevent access to to specific internet sites. From a cyber-security teaching perspective this would severely limit the scope of the technologies that could be deployed and investigated and limit access to potential teaching resources~\cite{ACGO:06,YYLCHJ:04}. Also a general purpose network deployment would not provide students with the administrative privileges that are required.
 
@@ -154,9 +154,9 @@ This paper focuses on the use of \emph{H}igh-\emph{I}nteraction-\emph{L}ow-\emph
 
 The two other types of honeypots are not required for undergraduate purposes, specifically \emph{H}igh-\emph{I}nteraction-\emph{H}igh-\emph{V}olume (\texttt{HIHV}) due to the cost of deployment and the length of time the environment would take to reconfigure for teaching purposes. This type of honeypot would be useful in a research environment such as a research centre for use in long term internet-based projects. The \emph{L}ow-\emph{I}nteraction-\emph{L}ow-\emph{V}olume (\texttt{LILV}) platform can be deployed inside the \texttt{HILV} platform as an academic exercise, for example installing and testing Kippo~\cite{D:16,SH:15}.
 
-Romney and Lanoy~\cite{LR:06} discuss the use of virtual environments as a mechanism to deploy honeypot platforms. Virtualisation of honeypot configurations does present some limitations with respect to deployment and data capture. Aspects of the deployment discussed in this paper are similar but the focus is on a target audience of undergraduate and post-graduate students. The paper extends their work by deploying honeypot environments as a physical server and network configuration to increase the potential use of the honeypots as learning environment. Spitner in~\cite{LS:03} discusses many cyber-security based attack techniques. The physically deployed \texttt{LIHV} lends itself to the types of attacks he discusses by deploying the \texttt{HILV} within the laboratory and allowing access from the laboratory to specifc services or equipment within the \texttt{LIHV} honeypot. 
+Romney and Lanoy~\cite{LR:06} discuss the use of virtual environments as a mechanism to deploy honeypot platforms, virtualisation as a technology can introduce limitations with respect to deployment, resource utilisation, and data capture. Aspects of the deployment discussed in this paper are similar to those of Romney and Lanoy but the focus in this paper is the use of honeypots for undergraduate and post-graduate students. The paper extends their work by deploying honeypot environments as a physical configuration to increase the potential use of the honeypots as a learning environment. Spitner~\cite{LS:03} discusses many cyber-security based attack techniques and the physically deployed \texttt{HILV} lends itself to the types of attacks he discusses. This includes deploying a \texttt{HILV} honeypot within the laboratory and allowing access from the laboratory to specifc services or equipment within it to emulate ``real'' attacks. 
 
-This paper also extends the ability to deploy the multi honeypot experimental environments as discussed by Duffany~\cite{JD:08} by reducing the cost of the honeypot architecture to increase the number of available honeypots for distributed data capture. The proposals in this paper make the \texttt{LIHV} honeypot architecture small enough to be a portable device suitable for deployment in multiple locations.
+The honeypot designs in this paper extend the ability to deploy multi honeypot experimental environments as discussed by Duffany~\cite{JD:08}. This is achieved by reducing the cost of the honeypot architecture to increase the number of available honeypots for a distributed data capture deployment. The proposals in this paper also make the \texttt{LIHV} honeypot architecture small enough to be a portable device suitable for deployment in multiple locations.
 
 \section{Teaching Requirements}\label{sec:TeachingRequire}
 
@@ -169,7 +169,7 @@ This paper also extends the ability to deploy the multi honeypot experimental en
 \noindent \emph{\textbf{Requirement 3:}} There needs to be a facility that allows large numbers of students to test existing cyber-security tools and to provide them with the ability to develop and test their own tools. 
 
 \subsection{\texttt{HILV} honeypot}\label{subsec:ResearchHoneypot}
-\noindent \emph{\textbf{Requirement 4:}} There needs to be a mechanism that allows students to build environments that are connected to the general networking laboratory but isolated via port mapping or address forwarding. 
+\noindent \emph{\textbf{Requirement 4:}} There needs to be a mechanism that allows students to build environments that are connected to the general networking laboratory via port mapping or address forwarding. 
 \newline\newline
 \noindent \emph{\textbf{Requirement 5:}} The \texttt{HILV} honeypot must support deployment of basic networking services on multiple low-cost servers (\texttt{DHCP}/\texttt{DNS}/\texttt{HTTP}/\texttt{DB}) to allow inter-service communications to be analysed. 
 \newline\newline
@@ -177,7 +177,7 @@ This paper also extends the ability to deploy the multi honeypot experimental en
 \newline\newline
 \noindent \emph{\textbf{Requirement 7:}} The honeypot must provide scope for additional services and devices to be added. It must also provide the ability to cascade multiple honeypots to create a honeynet~\cite{AA:15,FDF:15,KNC:15}.
 \newline\newline
-\noindent \emph{\textbf{Requirement 8:}} The honeypot must facilitate effective network traffic capture to ensure the integrity of any network analysis e.g. identifying network transactions in a website defacement or denial of service-based (DOS or DDOS) attack, or spoofed packets such as in \texttt{ARP} poisoning for man-in-the-middle (MitM) attacks~\cite{PS:16,RSKA:16}.  
+\noindent \emph{\textbf{Requirement 8:}} The honeypot must facilitate effective network traffic capture to ensure the integrity of any network analysis e.g. identifying network transactions in a website defacement or denial of service-based (\texttt{DoS} or \texttt{DDoS}) attack, or spoofed packets such as in \texttt{ARP} poisoning for man-in-the-middle (\texttt{MitM}) attacks~\cite{PS:16,RSKA:16}.  
 
 \section{Logical/Physical network infrastructure}\label{LogicalDesign}
 
@@ -189,24 +189,24 @@ The flexible laboratory environment needs to provide a re-configurable physical 
 \begin{figure}[h]
 \begin{center}
 	\includegraphics[scale=0.4]{Images/Infrastructure.eps}
-\caption{Networking laboratory overview}
+\caption{General networking laboratory overview}
 \label{fig:Overview1}
 \end{center}
 \end{figure}
 
-The ``Communications Cabinet'' is secured; students are not allowed access, to prevent reconfiguration of the base network and the network services equipment. The cabinet contains the \texttt{DHCP} and \texttt{DNS} servers, a 1U intranet server, a database server and a \texttt{NAS} drive. The communication cabinet includes the fibre link from the \texttt{ISP}. In the case of Northumbria University the provider is BT Business~\cite{BT:17}. The router used for the \texttt{ISP} connection is a Draytek Vigor 2850~\cite{DC:17}.
+The ``Communications Cabinet'' is secured; students are not allowed access, to prevent reconfiguration of the base network and the network services equipment. The cabinet contains the \texttt{DHCP} and \texttt{DNS} servers, a 1U intranet server, a database server and a \texttt{NAS} drive. The communication cabinet includes a \texttt{VDSL} fibre link from the \texttt{ISP}. In the case of Northumbria University the provider is BT Business~\cite{BT:17}. The router used to manage the \texttt{ISP} connection is a Draytek Vigor 2850~\cite{DC:17}.
 
 Each of the cabinets are linked to a laboratory bench supporting 8 - 10 students. Each cabinet contains a selection of switches, routers, \texttt{IP} Telephony, \texttt{IDS}, and Firewall equipment that are required for general network architecture modules. These cabinets are linked back to the communications cabinet to provide internet access for the benches. Access to the internet from the desktop is achieved through a \texttt{NAT} connection from the communcations cabinet \texttt{ISP} router. 
 
 The structured cabling allows the resources of each cabinet within the laboratory to be linked to the desktop through four structured cabling ports. Cross-cabinet connections ensure specialist resources are flexibly available to all benches e.g. switches, routers, firewalls, and \texttt{IDS} (Intrusion Detection Systems) etc.
 
 \subsection{Address range support}
-The use of virtualisation in the laboratory (\texttt{GNS3}~\cite{GNS3:17}, VMWare~\cite{VMWARE:17} and VirtualBox~\cite{O:17}) necessitates a large number of host addresses, to support a large number of students deploying statically addressed virtual hosts. Running the base infrastructure as a single subnet it allows freedom of movement of the laboratory equipment. Using a class B address provides 65,534 addresses.
-
-This provides enough addresses for each student to be allocated a block of contiguous \texttt{IP} addresses for each module allowing multiple modules to be delivered concurrently without having \texttt{IP} address conflicts. 
+The use of virtualisation (\texttt{GNS3}~\cite{GNS3:17}, VMWare~\cite{VMWARE:17} and VirtualBox~\cite{O:17}) to support the operating systems and networking modules necessitates a large number of host addresses, to support a large number of students deploying statically addressed virtual hosts. Running the base infrastructure as a single subnet allows freedom of movement of the laboratory equipment. Using a class B address provides 65,534 addresses which is enough for each student to be allocated a block of contiguous \texttt{IP} addresses for each module allowing multiple modules to be delivered concurrently without having \texttt{IP} address conflicts. 
 
 \subsection{Network service deployment}\label{InfraService}
-To support the operating systems and general computing subjects the network requires, as a minimum, \texttt{DNS}~\cite{RA:11} and \texttt{DHCP}~\cite{DL:02} services. These services are deployed on three small scale 1U servers (HPE ProLiant DL360 Gen9 Server~\cite{HPE:17}) in the communications cabinet as shown in~Figure~\ref{fig:Overview1}. One server supports \texttt{DHCP} and \texttt{DNS} which are integrated to create a \texttt{DDNS}~\cite{SV:06} environment. The second server acts as the secondary \texttt{DNS} server and the third as the laboratory intranet (\texttt{LAMP} based) server, along with a general purpose \texttt{MySQL} database services for the intranet and module content delivery. 
+To support the operating systems and general computing subjects the network requires, as a minimum, \texttt{DNS}~\cite{RA:11} and \texttt{DHCP}~\cite{DL:02} services. These services two services are deployed across three small scale 1U servers (HPE ProLiant DL360 Gen9 Server~\cite{HPE:17}). Two servers are located in the communications cabinet as shown in~Figure~\ref{fig:Overview1}. One server supports \texttt{DHCP} and \texttt{DNS} which are integrated to create a \texttt{DDNS}~\cite{SV:06} environment. The second server acts as the secondary \texttt{DNS} server. The third server is located in the \texttt{LIHV} honeypot cabiet and acts as a further secondary \texttt{DNS} server. 
+
+The communication cabinet also contains a 1U server that provides the laboratory intranet (\texttt{LAMP} based) service, along with a general purpose \texttt{MySQL} database services for the intranet and module content delivery. 
 
 Deployment of known desktop equipment is coordinated by creating reservation entries in the \texttt{DHCP} service. The \texttt{DHCP} server then automatically creates the forward and reverse \texttt{DNS} entries in the \texttt{DNS} architecture as the equipment boots. Students can also connect their own devices which are allocated a network configuration from a \texttt{DHCP} address pool. 
 

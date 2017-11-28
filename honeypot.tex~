@@ -278,23 +278,22 @@ shown in~Fig.~\ref{fig:Overview1}.
 \end{center}
 \end{figure}
 
-The communications cabinet is secured; students are not allowed access to it,
-in order to prevent them from reconfiguring the base network and the network
-services equipment.  The cabinet contains the primary \texttt{DHCP} and
-\texttt{DNS} servers, a 1U intranet server, a database server and a
-\texttt{NAS} drive. It also includes a \texttt{VDSL} fibre link from the
-\texttt{ISP}. In the case of Northumbria University, the provider is BT
-Business~\cite{BT:17}. A Draytek Vigor 2850~\cite{DC:17} router is used to
-manage the \texttt{ISP} connection.
+The ``Communications Cabinet'' is secured; students are not allowed access, to
+prevent reconfiguration of the base network and the network services equipment.
+The cabinet contains the \texttt{DHCP} and \texttt{DNS} servers, a 1U intranet
+server, a database server and a \texttt{NAS} drive. The communication cabinet
+includes a \texttt{VDSL} fibre link from the \texttt{ISP}. In the case of
+Northumbria University the provider is BT Business~\cite{BT:17}. The router
+used to manage the \texttt{ISP} connection is a Draytek Vigor
+2850~\cite{DC:17}.
 
-Students have unrestricted access to the other cabinets, each of which is
-linked to a laboratory bench supporting 8--10 students. These cabinets contain
-a selection of switches, routers, \texttt{IP} Telephony, \texttt{IDS}, and
-Firewall equipment that are required for general network architecture modules.
-They are linked back to the communications cabinet to provide Internet access
-for the benches. Access to the Internet from the desktop is achieved through a
-\texttt{NAT} connection from the \texttt{ISP} router in the communications
-cabinet. 
+Each of the cabinets are linked to a laboratory bench supporting 8--10
+students. Each cabinet contains a selection of switches, routers, \texttt{IP}
+Telephony, \texttt{IDS}, and Firewall equipment that are required for general
+network architecture modules. These cabinets are linked back to the
+communications cabinet to provide Internet access for the benches. Access to
+the Internet from the desktop is achieved through a \texttt{NAT} connection
+from the communications cabinet \texttt{ISP} router.
 
 The structured cabling allows the resources of each cabinet within the
 laboratory to be linked to the desktop through four structured cabling ports.
@@ -304,31 +303,30 @@ Detection Systems) etc.
 
 \subsection{Address Range Support}
 
-The use of virtualisation at the desktop (\texttt{GNS3}~\cite{GNS3:17},
-VMWare~\cite{VMWARE:17} and VirtualBox~\cite{O:17}), to support operating
-systems and networking modules, requires a large number of host addresses to
-support a large number of students deploying statically addressed virtual
-hosts. The base laboratory network infrastructure is configured as a single
-class B subnet.  This provides 65,534 addresses which is more than enough for
-each student to be allocated a block of contiguous \texttt{IP} addresses for
-each module, allowing multiple modules to be delivered concurrently without
-having \texttt{IP} address conflicts.  This approach also allows equipment to
-be moved around in the laboratory without requiring address reconfiguration.
+The use of virtualisation (\texttt{GNS3}~\cite{GNS3:17},
+VMWare~\cite{VMWARE:17} and VirtualBox~\cite{O:17}) to support the operating
+systems and networking modules necessitates a large number of host addresses,
+to support a large number of students deploying statically addressed virtual
+hosts. Running the base infrastructure as a single subnet allows freedom of
+movement of the laboratory equipment. Using a class B address provides 65,534
+addresses which is enough for each student to be allocated a block of
+contiguous \texttt{IP} addresses for each module allowing multiple modules to
+be delivered concurrently without having \texttt{IP} address conflicts.
 
 \subsection{Network Service Deployment}\label{InfraService}
 
-To support the study of operating systems and other general computing subjects,
-the network requires, as a minimum, \texttt{DNS}~\cite{RA:11} and
-\texttt{DHCP}~\cite{DL:02} services. These services are deployed across three
-small-scale, 1U servers (HPE ProLiant DL360 Gen9 Server~\cite{HPE:17}). Two
-servers are located in the communications cabinet as shown
-in~Fig.~\ref{fig:Overview1}. One server supports \texttt{DHCP} and \texttt{DNS}
-which are integrated to create a \texttt{DDNS}~\cite{SV:06} environment. The
-second server acts as the secondary \texttt{DNS} server. The third server is
-located in the \texttt{LIHV} honeypot cabinet and acts as a further secondary
-\texttt{DNS} server.
+To support the operating systems and general computing subjects the network
+requires, as a minimum, \texttt{DNS}~\cite{RA:11} and
+\texttt{DHCP}~\cite{DL:02} services. These services two services are deployed
+across three small scale 1U servers (HPE ProLiant DL360 Gen9
+Server~\cite{HPE:17}). Two servers are located in the communications cabinet as
+shown in~Fig.~\ref{fig:Overview1}. One server supports \texttt{DHCP} and
+\texttt{DNS} which are integrated to create a \texttt{DDNS}~\cite{SV:06}
+environment. The second server acts as the secondary \texttt{DNS} server. The
+third server is located in the \texttt{LIHV} honeypot cabinet and acts as a
+further secondary \texttt{DNS} server.
 
-The communications cabinet also contains a 1U server that provides the
+The communication cabinet also contains a 1U server that provides the
 laboratory intranet (\texttt{LAMP} based) service, along with a general purpose
 \texttt{MySQL} database services for the intranet and module content delivery.
 
@@ -341,63 +339,60 @@ their own devices which are allocated a network configuration from a
 
 \subsection{Teaching Facilities Support}
 
-Teaching of standard technologies, such as switching and routing, use the
-physical equipment within the cabinets. The laboratory also supports network
-virtualisation through \texttt{GNS3}, which can be integrated with the physical
-equipment when necessary. The teaching of the \texttt{OS}-based technologies is
-supported through the use of desktop virtualisation, allowing each student to
-have multiple clients and servers running simultaneously on a single machine.
-For large-scale scenarios, which are required on some modules, the virtual
-machines may be deployed across several desktop machines. These large scale
-deployments require the virtualisation software to support network card
-bridging to allow the virtual machines to be ``physically'' connected to the
-laboratory infrastructure.  Subjects that require a laboratory
-``search-by-name'' facility (\texttt{DNS} and \texttt{rDNS}) such as Java
-Sockets and C Sockets programming are supported by the \texttt{DDNS}
-implementation as discussed in~Sect.~\ref{InfraService}.
+The teaching of the standard technologies such as switching and routing utilise
+the physical equipment within the cabinets. The laboratory also supports
+network virtualisation through \texttt{GNS3} which can be integrated with the
+physical equipment when necessary. The teaching of the \texttt{OS} based
+technologies is supported through the use of desktop virtualisation allowing
+each student to have multiple client and server technologies running
+simultaneously on a single machine. For large scale deployments, which is
+required on some modules, the deployment of the virtual machines is across
+several desktop machines. The large scale deployments require the
+virtualisation software to support network card bridging to allow the virtual
+machines to be ``physically'' connected to the laboratory infrastructure.
+Subjects that require a laboratory ``search-by-name'' facility (\texttt{DNS} and
+\texttt{rDNS}) such as Java Sockets and C Sockets programming are supported by
+the \texttt{DDNS} implementation as discussed in~Sect.~\ref{InfraService}.
 
 \section{Honeypot Architectures}
 
-As shown in Table~\ref{table:HoneypotTypes}, we consider four types 
-of honeypot architecture.
+As shown in Table~\ref{table:HoneypotTypes} the four types are:
 
 \begin{itemize}
-
-  \item \noindent \emph{\textbf{LILV}} This type of honeypot is used when a
-    basic testing platform is required to identify how a service is being
-    attacked but no other interactions need to be investigated. For example, a
-    software system, such as Kippo~\cite{D:16,SH:15}, can be studied to
-    discover how it logs transactions to a file or a database. 
-
   \item \noindent \emph{\textbf{LIHV}} This type of honeypot is used when
-    carrying out analysis of high volumes of service requests but only
-    capturing a limited amount of service and system activity data, for example
-    when analysing multiple attackers carrying out authentication attacks on an
-    \texttt{FTP} server but only analysing the service log files. This type of
+    carrying out analysis of high levels of system interaction but only
+    capturing a limited amount of service and system activity data for example
+    analysing multiple attackers carrying out authentication attacks on an
+    \texttt{FTP} server and only analysing the service log files. This type of
     honeypot can also be used in a general purpose networking laboratory with
     students to allow them to investigate authentication tools such as Hydra
     and xHydra~\cite{RS:15} and to be a target when they are developing their
-    own tools such as an authentication-based botnet.
-
-  \item \noindent \emph{\textbf{HILV}} This type of honeypot is used when there
-    is a low volume of service requests but fine-grained data capture is
-    required. For example, when investigating a \texttt{DNS} enumeration
-    attack, a single \texttt{AXFR}~\cite{EL:10} query may be the only service
-    request required to initiate the attack but the effect of this query and
-    the high-level of activity it generates can be captured in great detail.  A
-    similar example is the profiling of a \texttt{Wordpress}~\cite{WP:17} site
-    using \texttt{WPScan}~\cite{WT:17}.
-
+    own tools such as an authentication based botnet.
+  \item \noindent \emph{\textbf{LILV}} This type of honeypot is used when a
+    basic testing platform is required to identify how a service is being
+    attacked. There is no other interactions under investigation, for example
+    using software systems such as Kippo~\cite{D:16,SH:15}, and testing how it
+    logs transactions to a file or a database. There are a few login
+    transactions from a limited number (usually 1) user and a simple activity
+    log of attempted logins.
   \item \noindent \emph{\textbf{HIHV}} This type of honeypot is used when a
-    system is being thoroughly tested with a high volume of service requests
-    (pressure testing) and involves large numbers of high-powered servers capable
+    system is being thoroughly tested with high levels of user interaction
+    (pressure testing) and involves large numbers of high power servers capable
     of supporting high levels of concurrent interactions. These honeypots
     provide detailed data capture capabilities of all the services and the
     inter-service interactions as well as system transactions e.g. \texttt{SQL}
-    queries and responses. They are usually deployed as ``real'' systems for
-    penetration testing and are often exposed to the Internet to analyse the
-    effects of unsolicited attacks.  
-
+    Queries and responses. They are usually deployed as a ``real'' system that
+    is being penetration tested and they are often exposed to the Internet to
+    analyses the effects of unsolicited attacks.
+  \item \noindent \emph{\textbf{HILV}} This type of honeypot is used when there
+    is a low level of interaction with the system but the data captured is fine
+    grain. For example investigating an enumeration attack such as a
+    \texttt{DNS} query. The detail of the information gathered from the
+    enumeration is low activity i.e.\ a single \texttt{AXFR}~\cite{EL:10}
+    query., However the effect of the query and the activity it generates
+    within the system is collected in great details. Another example would be
+    profiling a \texttt{Wordpress}~\cite{WP:17} site using
+    \texttt{WPScan}~\cite{WT:17}.
 \end{itemize}
 
 The two types of honeypot deployed in the laboratory are
@@ -576,7 +571,7 @@ laboratory and the Internet. Direct access to a target resource from the
 Internet into either the laboratory based honeypot or into a small scale
 research honeypot is achieved through packet forwarding as shown in
 Fig.~\ref{fig:Forward}. For this technique to function correctly the
-laboratory network and honeypot networks must be on different subnets.
+laboratory network and honeypot networks must be different subnets.
 
 The Internet facility also supports \texttt{IP} address forwarding to allow
 Internet-based access into the research honeypots. From the Internet packets
@@ -624,7 +619,7 @@ based reconnaissance, for instance, with Nmap~\cite{GFL:09} or service analysis
 tools such as WPScan~\cite{WT:17}. These types of attacks have a low impact on
 the network as a whole and are therefore safe to run in the general purpose
 laboratory. This machine is available internally and externally from the
-laboratory to support directed learning tasks and also to support collaborative
+laboratory to allow directed learning tasks and also to support collaborative
 ventures.
 
 \section{Operational Results\label{Results}}
@@ -633,7 +628,7 @@ The base infrastructure has been in place, and actively used, for 10 years. The
 laboratory-based honeypot has been in place for 9 years. The honeypot was
 introduced to support the undergraduate networking program when the
 cybersecurity module was introduced. This module was added to the BSc (Hons)
-Ethical Hacking degree 7 years ago in 2010.
+Ethical Hacking degree 9 years ago in 2008.
 
 The (\texttt{LIHV}) honeypot has been successfully used in the teaching of
 basic attack vectors such as port analysis, banner grabbing and service
@@ -709,7 +704,7 @@ analysis.
 \subsection{Supported Projects\label{Projects}}
 
 The most prolific area of usage of the research honeypot platforms is in the
-area of cybersecurity final year projects some of which are listed below:
+area of cybersecurity research projects some of which are listed below:
 
 \begin{itemize} 
   \item \noindent \emph{Multi-Tiered defence analysis of a simulated cyber

@@ -427,13 +427,40 @@ consists of:
           a PC running TCPDump or Wireshark (Red Cable).
         \item \noindent All other ports are mirrored to the monitor (ports
           1--7).
-        \item \noindent 1 port (port 1) cascades to the router.
-        \item \noindent 4 ports are connected to the 4 Raspberry Pi servers
-          (ports 2--5) cascades to the router.
-        \item \noindent 2 spare ports (ports 6,7) are available for additional
-          services or clients to be added (Blue Cables)
+        \item \noindent 1 port (port 7) links the switch and router.
+        \item \noindent 4 ports (ports 1--4) are connected to the 4 Raspberry Pi 
+        servers.
+        \item \noindent 2 spare ports (ports 5,6) are available for additional
+          services, clients, or devices to be added (Blue Cables).
     \end{itemize}
 \end{itemize}
+
+The two additional devices shown in Figure~\ref{fig:HPOverview} could be PC's to act as attack entry points or target devices such as PCs or wireless access points. These devices could also be PCs supporting virtualisation to extend the honeypot's functionality. Table~\ref{table:HoneypotCosts} shows the approximate costs of the basic \texttt{HILV} without additional devices or the monitoring PC attached.
+
+\begin{table}[h]
+\caption{Approximate costs\label{table:HoneypotCosts}}
+\begin{center}
+\begin{tabular}{| l | r |}
+\hline
+Item & Cost (\pounds) \\
+\hline
+Switch & 100 \\
+\hline
+Router & 100 \\
+\hline
+Raspberry Pi Boards (x4) & 100 \\
+\hline
+Fabrication & 50 \\
+\hline
+Cabling & 25 \\
+\hline
+Power supplies & 50 \\
+\hline
+\textbf{Total} & \textbf{425} \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
 
 \begin{figure}[ht]
   \centering
@@ -571,7 +598,7 @@ laboratory and the Internet. Direct access to a target resource from the
 Internet into either the laboratory based honeypot or into a small scale
 research honeypot is achieved through packet forwarding as shown in
 Fig.~\ref{fig:Forward}. For this technique to function correctly the
-laboratory network and honeypot networks must be different subnets.
+laboratory network and honeypot networks must be on different subnets.
 
 The Internet facility also supports \texttt{IP} address forwarding to allow
 Internet-based access into the research honeypots. From the Internet packets
@@ -619,7 +646,7 @@ based reconnaissance, for instance, with Nmap~\cite{GFL:09} or service analysis
 tools such as WPScan~\cite{WT:17}. These types of attacks have a low impact on
 the network as a whole and are therefore safe to run in the general purpose
 laboratory. This machine is available internally and externally from the
-laboratory to allow directed learning tasks and also to support collaborative
+laboratory to support directed learning tasks and also to support collaborative
 ventures.
 
 \section{Operational Results\label{Results}}
@@ -628,7 +655,7 @@ The base infrastructure has been in place, and actively used, for 10 years. The
 laboratory-based honeypot has been in place for 9 years. The honeypot was
 introduced to support the undergraduate networking program when the
 cybersecurity module was introduced. This module was added to the BSc (Hons)
-Ethical Hacking degree 9 years ago in 2008.
+Ethical Hacking degree 7 years ago in 2010.
 
 The (\texttt{LIHV}) honeypot has been successfully used in the teaching of
 basic attack vectors such as port analysis, banner grabbing and service
@@ -704,7 +731,7 @@ analysis.
 \subsection{Supported Projects\label{Projects}}
 
 The most prolific area of usage of the research honeypot platforms is in the
-area of cybersecurity research projects some of which are listed below:
+area of cybersecurity final year projects some of which are listed below:
 
 \begin{itemize} 
   \item \noindent \emph{Multi-Tiered defence analysis of a simulated cyber

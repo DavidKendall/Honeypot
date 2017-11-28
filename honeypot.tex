@@ -427,13 +427,40 @@ consists of:
           a PC running TCPDump or Wireshark (Red Cable).
         \item \noindent All other ports are mirrored to the monitor (ports
           1--7).
-        \item \noindent 1 port (port 1) cascades to the router.
-        \item \noindent 4 ports are connected to the 4 Raspberry Pi servers
-          (ports 2--5) cascades to the router.
-        \item \noindent 2 spare ports (ports 6,7) are available for additional
-          services or clients to be added (Blue Cables)
+        \item \noindent 1 port (port 7) links the switch and router.
+        \item \noindent 4 ports (ports 1--4) are connected to the 4 Raspberry Pi 
+        servers.
+        \item \noindent 2 spare ports (ports 5,6) are available for additional
+          services, clients, or devices to be added (Blue Cables).
     \end{itemize}
 \end{itemize}
+
+Table~\ref{table:HoneypotCosts} shows the approximate costs of the \texttt{HILV}.
+
+\begin{table}[h]
+\caption{Approximate costs\label{table:HoneypotCosts}}
+\begin{center}
+\begin{tabular}{| l | r |}
+\hline
+Item & Cost (\pounds) \\
+\hline
+Switch & 100 \\
+\hline
+Router & 100 \\
+\hline
+Raspberry Pi Boards (x4) & 100 \\
+\hline
+Fabrication & 50 \\
+\hline
+Cabling & 25 \\
+\hline
+Power supplies & 50 \\
+\hline
+\textbf{Total} & \textbf{425} \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
 
 \begin{figure}[ht]
   \centering

@@ -28,43 +28,46 @@ Teaching Real-World Cybersecurity Skills
 \maketitle
 
 \begin{abstract}
-  Teaching cybersecurity within a University environment requires a closed
-  environment that is off-campus and configured such that students can transfer
-  theoretical principles into practical cybersecurity skills. The subject
-  necessitates the need for honeypot technologies that will allow the
-  investigation of network-based cybersecurity attacks. The need for a closed
-  environment, which may be considered as a ``sandbox'', arises from the nature
-  of cybersecurity investigations, especially where students are required to
-  investigate network protocol-based attacks that could render a teaching
-  network environment unstable or unusable.
-
-  Although the environments are closed they still require access to the Internet.
-  The honeypot platform and the teaching environments discussed in this paper
-  are designed so as to provide an environment that is flexible enough to allow
-  the teaching of general purpose networking and operating systems subjects,
-  and to support complex sand-boxed integration of honeypot technologies for
-  the teaching of the practical aspects of cybersecurity.
-
-  The paper concludes by outlining how the platform has been successfully
-  deployed within a University environment to support undergraduate and
-  postgraduate teaching and learning by highlighting the types of
-  experimentation and projects that the environment has supported and will
-  support in the future.
-  \keywords{Cyber Security \middot\ Network Security \middot\ Honeypot \middot\ Teaching}
+  Teaching practical cybersecurity skills within a University environment poses
+  a number of challenges. Students benefit greatly from the opportunity to
+  exercise full control of physical equipment and services, and to have
+  complete insight into their behaviour. Permitting such control of machines on
+  a main University campus network presents far too great a risk to security.
+  Provisioning a laboratory entirely dedicated to cybersecurity may not be
+  possible due to resource constraints. This paper describes an alternative
+  approach that has been used successfully at Northumbria University for
+  several years. In this approach, students have access to an off-campus
+  network of laboratory machines with a dedicated connection to the Internet.
+  This environment is flexible enough to allow the teaching of general purpose
+  networking and operating systems subjects, while also supporting the complex
+  sandboxed integration of honeypot technologies for the teaching of practical
+  aspects of cybersecurity. The paper presents an analysis of honeypot
+  architectures and presents two such architectures that have proved to be
+  useful for a variety of cybersecurity investigations.  One of these honeypot
+  types offers students the opportunity for a highly detailed study of
+  cybersecurity attacks and defences at very low cost. It can be usefully
+  employed as a standalone device or safely integrated into the laboratory
+  environment for the study of more complex scenarios.  The paper concludes by
+  outlining how the platform has been successfully deployed within a University
+  environment to support undergraduate and postgraduate teaching and learning.
+  It highlights the types of experimentation and projects that the environment
+  has supported and will support in the future.
+  \keywords{Cybersecurity \middot\ Network Security \middot\ Honeypot 
+            \middot\ Teaching} 
 \end{abstract}
 
 
 \section{Introduction}\label{intro}
 When teaching cybersecurity in an academic environment there are many
 considerations that need to be taken into account, not least, respecting other
-users privacy and their access to the learning and teaching facilities within
+users' privacy and their access to the learning and teaching facilities within
 the academic environment.
 
 Activities such as reconnaissance and experimentation can result in traffic or
 services being deployed into the teaching network environment. These activities
-may effect other users through service depletion, traffic
+may affect other users through service depletion, traffic
 redirection~\cite{ACGO:06,LR:06} or through data capture that may compromise a
-users legal rights e.g.\ capturing activity or sensitive information that you
+user's legal rights e.g.\ capturing activity or sensitive information that you
 are not authorised to possess.
 
 The environment must also support activities that would normally be prevented
@@ -78,17 +81,20 @@ access to potential teaching resources~\cite{ACGO:06,YYLCHJ:04}. Also a general
 purpose network deployment would not provide students with the administrative
 privileges that are required.
 
-When investigating cybersecurity there is also a need for the environment to
-be controlled such that the services and network protocols are minimised or
-reduced  therefore the effects an attack have upon the environment can be
-isolated and analyses effectively i.e.\ if analysing the effects of throughput
-on a protocol any rogue activities, such as file transfers or service
-advertising may impact on the experimental environment and invalidate the
-results.
+When investigating cybersecurity there is also a need for the environment to be
+controlled by reducing services and network protocols  in order to allow the
+effects of an attack to be isolated and analysed thoroughly, e.g.\ when
+analysing the effects of throughput on a protocol, any rogue activities, such
+as file transfers or service advertising, may impact on the experimental
+environment and invalidate the results.
 
 These issues highlight the need for a clear definition of the requirements of
-\emph{academic honeypot} environments and the need for closed specialist
-environments for the study of cybersecurity.
+specialist environments for the study of cybersecurity. This is one of the
+key topics of this paper.
+
+Another key topic of the paper is the role that can be played by \emph{honeypots}
+in providing a stimulating environment for students to study practical
+aspects of cybersecurity.
 
 Honeypots are computer systems that are specifically designed for
 cybersecurity investigations~\cite{FKAS:17,BCF:12,ZZQL:03}. They may be
@@ -166,6 +172,11 @@ honeypots are expensive to deploy and time-consuming to reconfigure for
 different teaching scenarios. This type of honeypot would be useful in a
 research environment such as a research centre for use in long term
 Internet-based projects. 
+
+We propose that the combination of a flexible, general purpose laboratory
+together with sandboxed deployment of LIHV and HILV honeypots provides 
+a stimulating, cost-effective environment for the cybersecurity studies
+in a University setting.
 
 \paragraph{Related Work.}
 Romney and Lanoy~\cite{LR:06} discuss the use of virtual environments as a
@@ -406,9 +417,10 @@ The two types of honeypot deployed in the laboratory are
 
 \subsection{\texttt{HILV} Honeypot}
 
-The \texttt{HILV} honeypot architecture is an isolated environment. This is
-achieved by using a commercially available cable router that is connected to
-the main laboratory infrastructure as shown in Fig.~\ref{fig:HPOverview}.
+The \texttt{HILV} honeypot architecture provides an isolated environment that
+can be connected to the main laboratory infrastructure in a controlled way
+using a commercially available cable router, as shown in
+Fig.~\ref{fig:HPOverview}.
 
 \begin{figure}[!ht]
 \begin{center}
@@ -419,7 +431,7 @@ the main laboratory infrastructure as shown in Fig.~\ref{fig:HPOverview}.
 \end{figure}
 
 Figures~\ref{fig:HP1}~and~\ref{fig:HP2} shows the complete device as deployed
-in the specialist teaching laboratories. The complete research honeypot
+in the specialist teaching laboratories. The complete HILV honeypot
 consists of:
 
 \begin{itemize}
@@ -440,32 +452,13 @@ consists of:
     \end{itemize}
 \end{itemize}
 
-The two additional devices shown in Figure~\ref{fig:HPOverview} could be PCs to act as attack entry points or target devices such as PCs or wireless access points. These devices could also be PCs supporting virtualisation to extend the honeypot's functionality. Table~\ref{table:HoneypotCosts} shows the approximate costs of the basic \texttt{HILV} without additional devices or the monitoring PC attached.
-
-\begin{table}[h]
-\caption{Approximate costs\label{table:HoneypotCosts}}
-\begin{center}
-\begin{tabular}{| l | r |}
-\hline
-Item & Cost (\pounds) \\
-\hline
-Switch & 100 \\
-\hline
-Router & 100 \\
-\hline
-Raspberry Pi Boards (x4) & 100 \\
-\hline
-Fabrication & 50 \\
-\hline
-Cabling & 25 \\
-\hline
-Power supplies & 50 \\
-\hline
-\textbf{Total} & \textbf{425} \\
-\hline
-\end{tabular}
-\end{center}
-\end{table}
+The two additional devices shown in Figure~\ref{fig:HPOverview} could be PCs to
+act as attack entry points or target devices such as PCs or wireless access
+points. These devices could also be PCs supporting virtualisation to extend the
+honeypot's functionality. The approximate cost of the basic \texttt{HILV},
+without additional devices or the monitoring PC attached, is £450. This offers
+a highly stimulating environment for the teaching of practical cybersecurity
+skills at a very low cost.
 
 \begin{figure}[ht]
   \centering
@@ -488,12 +481,12 @@ Power supplies & 50 \\
 %% \end{center}
 %% \end{figure}
 
-Using Raspberry Pi boards as the main server technology within the honeypot has
-allowed reconfiguration and rebuilding of the architecture to be simplified.
+Using Raspberry Pi boards as the main server technology within the honeypot allows 
+reconfiguration and rebuilding of the architecture to be simplified.
 The operating system (and configured services) are stored on removable media
 (micro SD cards) which simplifies server recovery and the maintaining of
 multiple configurations. Images of the honeypot's base configuration can easily
-be restored. Multiple configuration can be kept on different image sets and
+be restored. Multiple configurations can be kept on different image sets and
 students can keep individual projects as a set of micro SD cards that they
 retain for the duration of a project.
 
@@ -507,26 +500,26 @@ than 16 million addresses.
 \subsubsection{Router Configuration.}
 
 The \texttt{HILV} honeypot's \texttt{ADSL} router is configured to provide only
-routing services by disabling all other services for example \texttt{NAS} and
+routing services by disabling all other services, e.g.\ \texttt{NAS} and
 \texttt{DHCP} facilities. This configuration allows all infrastructure
-protocols to be managed from within the honeypot using small scale servers
+protocols to be managed from within the honeypot using small-scale servers
 (Raspberry Pi boards~\cite{RASP:17}). Configuring the services on separate
 servers allows analysis of inter-service activity during normal network
 activity and during an attack.
 
 The router used in the \texttt{HILV} honeypot is an ASUS RT
-AC66U~\cite{ASUS:17}. The router is configured to use laboratory based
+AC66U~\cite{ASUS:17}. The router is configured to use the laboratory-based
 \texttt{DHCP} server to acquire an  address. The \texttt{IP} address is
 allocated from a reservation which allows a consistent mapping of the forwarded
-\texttt{IP} address from the Internet-based router to the research honeypot
+\texttt{IP} address from the Internet-based router to the HILV honeypot
 router. Defining the mapping in this way allows external host names
 (\texttt{URL}s) to be mapped to the honeypot for Internet-based attack
-analysis. Forwarding of the traffic from the research router into the honeypot
+analysis. Forwarding of traffic from the router into the honeypot
 can be enabled and disabled when required.
 
-For direct access to the honeypot from the laboratory \texttt{IP} forwarding is
-configured such that it will ``point'' to a target machine within the honeypot
-as shown in Fig.~\ref{fig:Forward}. In small scale routers this operation is
+For direct access to the honeypot from the laboratory, \texttt{IP} forwarding is
+configured to  ``point'' to a target machine within the honeypot,
+as shown in Fig.~\ref{fig:Forward}. In small-scale routers, this operation is
 normally referred to as a \texttt{DMZ} (demilitarised zone)
 redirection~\cite{DK:08,MB:01}.
 
@@ -540,30 +533,30 @@ redirection~\cite{DK:08,MB:01}.
 
 \subsubsection{Switch Configuration.}
 
-The main component of the \texttt{HILV} honeypot is a commercially available 8
-port managed switch. The switch must support layer 2 management~\cite{ST:98} to
+A key component of the \texttt{HILV} honeypot is a commercially available,
+8-port, managed switch. The switch supports layer 2 management~\cite{ST:98} to
 provide two specific technologies: port mirroring and port throttling. Suitable
-switches include HP 2530-08~\cite{HP:17} or TP-LINK TL-SG2008~\cite{TP:17}.
-Port mirroring and port throttling combined provided a reliable packet capture
-architecture. 
+switches include HP 2530-08~\cite{HP:17} and TP-LINK TL-SG2008~\cite{TP:17}.
+The combination of port mirroring and port throttling provides a reliable architecture
+for packet capture. 
 
 \paragraph{Port mirroring.}
 Switches by design provide a layer of security through virtual
-circuits. A virtual circuit is an internal route whereby traffic is filtered by
+circuits. A virtual circuit is an internal path whereby traffic is filtered by
 the \texttt{Ethernet\_II} frame header. Switches maintain an in-memory table of
-ports and \texttt{MAC} addresses to route each packet to a specific port. The
-result of this routing is that packets are transferred port to port and not
-broadcast, which limits packet capture. When using a Honeypot packet capture is
-a vital part of the architecture for analysis of any network based attack
-vector. Using a managed switch (as discussed above) it is possible to configure
-the ports on the switch to be mirrored to a specific port as shown in
+ports and \texttt{MAC} addresses to pass each packet to a specific port. The
+result of this routing is that packets are transferred port to port and are not
+broadcast, which limits packet capture. When using a honeypot, packet capture is
+a vital part of the architecture for the analysis of any network-based attack
+vector. Using a managed switch (as discussed above), it is possible to configure
+the ports on the switch to be mirrored to a specific port, as shown in
 Figs.~\ref{fig:HPOverview} and~\ref{fig:throttling}. This allows all the
 network activity to be captured and analysed~(\emph{Requirement 8}).
 
 \paragraph{Bandwidth throttling.} 
-A further issue with capturing the packets within the honeypot that must be
-addressed is packet loss on the port where the mirrored traffic is forwarded.
-Switches by design endeavour to provided the maximum transfer speed possible
+A further issue with the capture of the honeypot network traffic 
+is the possibility of packet loss on the port where the mirrored traffic is forwarded.
+Switches are designed to provide maximum transfer speed 
 between ports. This is achieved through the switch's backplane. The mirroring
 of packets has a lower priority than that of throughput and therefore packet
 loss on a mirrored port is inevitable on a heavily loaded switch. To prevent
@@ -583,37 +576,35 @@ satisfies \emph{requirement 8}.
 \end{center}
 \end{figure}
 
-Switches can implement mirroring in two ways. Firstly as a monitor-only port
-where the transmission functionality of port is removed therefore no data can
-be transmitted to the infrastructure (as in the case of an HP 1810-G). This
-type of configuration therefore prevents a monitoring piece of equipment from
-adding traffic to the network. Alternatively some manufacturers setup the
-mirrored too port so it provided full functionality as well as the mirrored
-capability (as in the case of a TP-SG2008). This allows the attached monitor to
-also be used as a device within the honeypot. If the monitor port provides full
-functionality the addition of a LAN tap~\cite{RB:13} can remove the
-transmission facilities of the port creating the required monitor only
-functionality as shown in Fig.~\ref{fig:HPOverview}.
+Switches can implement mirroring in one of two ways. Firstly, a monitor-only
+port can be provided, where the transmission capability of the port is removed,
+(as in the case of an HP 1810-G). This type of configuration prevents the
+monitoring device from adding traffic to the network. Alternatively, some
+manufacturers configure the mirroring port to offer full transmit/receive
+functionality, in addition to the mirroring capability (as in the case of a
+TP-SG2008). This allows the attached monitor to also be used as a device within
+the honeypot. If the monitor port provides full functionality, the addition of
+a LAN tap~\cite{RB:13} can remove the transmission facilities of the port,
+creating monitor-only functionality when required, as shown in
+Fig.~\ref{fig:HPOverview}.
 
 \subsubsection{Internet Support.}
 
 Access to the Internet from the honeypot is possible through the double
-\texttt{NAT}'d configuration. The configuration provides isolation from the
-laboratory and the Internet. Direct access to a target resource from the
-Internet into either the laboratory based honeypot or into a small scale
-research honeypot is achieved through packet forwarding as shown in
-Fig.~\ref{fig:Forward}. For this technique to function correctly the
-laboratory network and honeypot networks must be on different subnets.
+\texttt{NAT}'d configuration. This configuration provides isolation from the
+laboratory and the Internet. External response to a service request from a
+device in the honeypot is achieved through packet forwarding, as shown in
+Fig.~\ref{fig:Forward}. For this technique to function correctly the laboratory
+network and honeypot network must be on different subnets.
 
 The Internet facility also supports \texttt{IP} address forwarding to allow
-Internet-based access into the research honeypots. From the Internet packets
-are forwarded to the address of a honeypot router which is in turn forwards
-traffic to a target machine inside the research honeypot as shown in
-Fig.~\ref{fig:Forward}.
+Internet-based access into the honeypot. From the Internet, packets are
+forwarded to the address of a honeypot router which, in turn, forwards traffic
+to a target machine inside the honeypot, as shown in Fig.~\ref{fig:Forward}.
 
-This configuration allows specific configurations to be exposed to capture
-Internet-based attacks and to support remote access to the honeypot for remote
-configuration and monitoring.
+This configuration allows specific configurations to be exposed in order to
+capture Internet-based attacks and to support remote access to the honeypot for
+remote configuration and monitoring.
 
 \subsection{\texttt{LIHV} Honeypot}
 
